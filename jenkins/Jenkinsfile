@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('Build'){
             steps {
-                sh 'cd docker && docker-compose up'
+                sh 'docker build -f docker/test-dockerfile-v1 -t chat-test .'
+                sh 'docker run chat-test'
+
             }
         }
     }
