@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Build'){
+        stage('Test'){
             steps {
                 sh 'docker build -f docker/test-dockerfile-v1 -t chat-test .'
                 sh 'docker run chat-test'
