@@ -24,6 +24,15 @@ describe('Server', function (){
         throw err
       });
   });
+
+  it('Should faiil if first test pass', function (){
+    chai.request(url).get('/')
+    .then(function (res) {
+      expect(res).to.have.status(404);
+    }, function (err) {
+      throw err;
+    });
+  });
   
   
   
