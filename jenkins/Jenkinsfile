@@ -5,8 +5,21 @@ pipeline {
             steps {
                 sh 'docker build -f docker/test-dockerfile-v1 -t chat-test .'
                 sh 'docker run chat-test'
-
             }
+        }
+    }
+    post {
+        failure {
+            mail to: 'skarpecki@student.agh.edu.pl',
+                 subject: "Failed chat pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Something is wrong with ${env.BUILD_URL}"
+        }
+
+        sucess {
+            mail to: 'skarpecki@student.agh.edu.pl',
+                 subject: "Succeded chat pipeline: ${currentBuild.fullDisplayName}",
+                 body: "Everything is fine with ${env.BUILD_URL}"
+        }
         }
     }
 }
