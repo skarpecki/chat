@@ -13,6 +13,8 @@ RUN git clone https://github.com/skarpecki/chat \
 && cd chat \
 && npm install
 
+RUN cd chat \
+&& npm run &
+
 CMD cd chat \
-&& npm run & \
 && npm test
