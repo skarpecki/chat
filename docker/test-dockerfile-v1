@@ -12,6 +12,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_15.x | bash - \
 RUN git clone https://github.com/skarpecki/chat 
 
 
-CMD ls
+CMD ls \
 && cd chat \
 && ls
