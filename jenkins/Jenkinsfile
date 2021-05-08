@@ -38,9 +38,5 @@ pipeline {
             */
             echo "Succeded"
             }   
-        }
-
-	always {
-
-	}
+    }
 }
