@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Test'){
             steps {
-                sh 'docker build -f docker/${DOCKERFILE_TEST} -t ${DOCKER_TEST} --build_arg BUILD_IMAGE=${DOCKER_BUILD} .'
+                sh 'docker build -f docker/${DOCKERFILE_TEST} -t ${DOCKER_TEST} --build-arg BUILD_IMAGE=${DOCKER_BUILD} .'
                 sh 'docker run ${DOCKER_TEST}'
             }
         }
