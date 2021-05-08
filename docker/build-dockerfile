@@ -10,7 +10,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_15.x | bash - \
 && apt-get install -y nodejs 
 
 RUN git clone https://github.com/skarpecki/chat \
-&& npm install --prefix chat
+&& npm install --prefix chat/src
 
 # will automatically stop after 60 seconds 
-CMD npm start --prefix chat & sleep 60
+CMD npm start --prefix chat/src & sleep 60

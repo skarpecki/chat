@@ -1,4 +1,4 @@
 ARG BUILD_IMAGE
 FROM $BUILD_IMAGE
 
-CMD npm start --prefix chat & sleep 60 && npm test --prefix chat
+CMD npm start --prefix chat/src & sleep 60 && npm test --prefix chat/src
