@@ -38,5 +38,9 @@ pipeline {
             */
             echo "Succeded"
             }   
+        always {
+            sh 'docker rmi ${DOCKER_TEST}'
+            sh 'docker rmi ${DOCKER_BUILD}'
+        }
     }
 }
