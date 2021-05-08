@@ -1,10 +1,22 @@
 pipeline {
     agent any
+    environment {
+        DOCKER_BUILD = 'chat-build'
+        DOCKER_TEST  = 'chat-test'
+        DOCKERFILE_BUILD  = 'build-dockerfile' 
+        DOCKERFILE_TEST   = 'test-dockerfile'
+    }
     stages {
+        stage('Build'){
+            steps{
+                sh 'docker build -f docker/${DOCKERFILE_BUILD} -t ${DOCKER_BUILD}'
+                sh 'docker run ${DOCKER_BUILD}'
+            }
+        }
         stage('Test'){
             steps {
-                sh 'docker build -f docker/test-dockerfile-v1 -t chat-test .'
-                sh 'docker run chat-test'
+                sh 'docker build -f docker/${DOCKERFILE_TEST} -t ${DOCKER_TEST} --build_arg BUILD_IMAGE=${DOCKER_BUILD} .'
+                sh 'docker run ${DOCKER_TEST}'
             }
         }
     }
@@ -27,4 +39,8 @@ pipeline {
             echo "Succeded"
             }   
         }
+
+	always {
+
+	}
 }
