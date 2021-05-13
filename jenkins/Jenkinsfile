@@ -31,6 +31,7 @@ pipeline {
     }
     post {
         failure {
+            
             /*
             mail to: 'skarpecki@student.agh.edu.pl',
                  subject: "Failed chat pipeline: ${currentBuild.fullDisplayName}",
