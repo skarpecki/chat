@@ -24,7 +24,7 @@ pipeline {
                 sh 'docker run -d -t --name deploy_container ubuntu:latest '
                 sh 'docker save -o /tmp/${DOCKER_BUILD}.tar ${DOCKER_BUILD}'
                 sh 'docker cp /tmp/${DOCKER_BUILD}.tar deploy_container:/tmp/'
-                sh 'docker load -i /tmp/{DOCKER_BUILD}.tar'
+                sh 'docker load -i /tmp/${DOCKER_BUILD}.tar'
                 sh 'docker rm -f deploy_container'
             }
         }
